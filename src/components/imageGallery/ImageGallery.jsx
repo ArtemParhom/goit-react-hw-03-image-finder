@@ -12,5 +12,13 @@ const ImageGallery = ({ openModal, arrayImages }) => {
 export default ImageGallery;
 
 ImageGallery.propTypes = {
-  arrayImages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  arrayImages: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+    })
+  ),
+  openModal: PropTypes.func.isRequired,
 };

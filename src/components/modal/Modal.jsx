@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import css from './Modal.module.css';
+import PropTypes from 'prop-types';
 
 export class Modal extends Component {
   componentDidMount() {
@@ -18,7 +19,14 @@ export class Modal extends Component {
 
   render() {
     return (
-      <div className={css.Overlay} onClick={this.props.closeModal}>
+      <div
+        className={css.Overlay}
+        onClick={event => {
+          if (event.target === event.currentTarget) {
+            this.props.closeModal();
+          }
+        }}
+      >
         <div className={css.Modal}>
           <img src={this.props.src} alt={this.props.alt} />
         </div>
@@ -26,3 +34,9 @@ export class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+};

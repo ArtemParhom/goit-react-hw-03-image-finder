@@ -92,7 +92,7 @@ export class App extends Component {
 
   closeModal = () => {
     this.setState(({ modal }) => {
-      return { modal: !modal };
+      return { modal: !modal, image: '', alt: '' };
     });
   };
   //----------
